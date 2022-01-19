@@ -1,8 +1,11 @@
 <?php
 
+use App\Chat;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GuestController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,24 +20,36 @@ use App\Http\Controllers\DashboardController;
 
 Auth::routes();
 
-Route::get('/preview/{view}', function($view) {
-    return view($view);
+
+Route::get('/chat', function() {
+    return view('chat');
 });
 
-Route::view('profile', 'profile')->name('profile');
+Route::post('/chat', function(Request $request) {
+    $chat = Chat::create([
+        'token' => $request->input('_token'),
+        'username' => $request->input('username')
+    ]);
 
-Route::view('pengaturan', 'pengaturan')->name('pengaturan');
+    return response()->json([
+        $chat->id
+    ]);
+})->name('chat.init');
 
-Route::get('/gantipassword', [DashboardController::class, 'gantipassword'])->name('ganti-password');
-Route::post('/gantipasswd', [DashboardController::class, 'gantipasswd'])->name('gantipasswd');
-
-Route::view('/', 'landing-page')->name('pengaturan');
+Route::get('/', [GuestController::class, 'index']);
 
 Route::middleware('auth')->group(function () {
+    Route::view('profile', 'profile')->name('profile');
+
+    Route::view('pengaturan', 'pengaturan')->name('pengaturan');
+    Route::get('/gantipassword', [DashboardController::class, 'gantipassword'])->name('ganti-password');
+    Route::post('/gantipasswd', [DashboardController::class, 'gantipasswd'])->name('gantipasswd');
+
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::resources([
-        'chats' => 'ChatController',
-        'psikologs' => 'PsikologController'
+        'chats'     => 'ChatController',
+        'psikologs' => 'PsikologController',
+        'consult'   => 'ConsultController'
     ]);
 });

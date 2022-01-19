@@ -1,5 +1,5 @@
 @extends('super-admin.master', [
-    'title' => "$title Data Anggota Keluarga"
+    'title' => "$title Psikolog"
 ])
 
 @section('body')
@@ -8,10 +8,6 @@
     @endif
 
     <x-form :column="12">
-        <x-slot name="header">
-            <h4>Form Input Data Anggota Keluarga</h4>
-        </x-slot>
-
         <div>
             <x-slot name="body">
                 <form method="POST" action="{{$url}}">
@@ -35,12 +31,4 @@
             </x-slot>
         </div>
     </x-form>
-@endsection
-
-@section('javascript')
-<script>
-    $(document).ready(function() {
-        $('.select2').select2();
-    });
-</script>
 @endsection

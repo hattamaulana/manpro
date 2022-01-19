@@ -11,27 +11,41 @@ class PsikologController extends Controller {
         $inputs = [
             [
                 'type' => 'text',
-                'label' => 'Username',
-                'name' => 'username',
-                'value' => (isset($values->user->username) ? $values->user->username : ''),
-            ],
-            [
-                'type' => 'text',
                 'label' => 'Nama',
                 'name' => 'nama',
                 'value' => (isset($values->nama) ? $values->nama : ''),
+                'column' => 'col-md-4'
             ],
             [
                 'type' => 'text',
                 'label' => 'Email',
-                'name' => 'email',
+                'name' => 'username',
                 'value' => (isset($values->email) ? $values->email : ''),
+                'column' => 'col-md-4'
+            ],
+            [
+                'type' => 'radio',
+                'label' => 'Jenis Kelamin',
+                'name' => 'jenis_kelamin',
+                'options' => [
+                    [
+                        'text'  => 'Perempuan',
+                        'value' => 'Perempuan',
+                    ],
+                    [
+                        'text'  => 'Laki-laki',
+                        'value' => 'Laki-laki',
+                    ]
+                ],
+                'value' => (isset($values->jenis_kelamin) ? $values->jenis_kelamin : ''),
+                'column' => 'col-md-4'
             ],
             [
                 'type' => 'text',
                 'label' => 'Alamat',
                 'name' => 'alamat',
                 'value' => (isset($values->alamat) ? $values->alamat : ''),
+                'column' => 'col-md-12'
             ],
         ];
 

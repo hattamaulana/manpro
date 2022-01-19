@@ -17,11 +17,10 @@
         <x-slot name="thead">
             <tr>
                 <th scope="col">#</th>
-                <th scope="col" style="width: 20%">Action</th>
-                <th scope="col">Username</th>
                 <th scope="col">Nama</th>
                 <th scope="col">Email</th>
                 <th scope="col">Alamat</th>
+                <th scope="col" style="width: 20%">Action</th>
             </tr>
         </x-slot>
 
@@ -30,16 +29,16 @@
                 @foreach ($data ?? [] as $i => $item)
                     <tr>
                         <td scope="row">{{ $i+1 }}</td>
+                        <td scope="row">{{ $item->nama }}</td>
+                        <td scope="row">{{ $item->user->username }}</td>
+                        <td scope="row">{{ $item->alamat }}</td>
+
                         <td scope="row">
                             <a href="{{ route('psikologs.edit', ['psikolog' => $item->id]) }}"
                                 class="btn btn-warning btn-icon"><i class="fas fa-edit"></i></a>
                             <button onclick="showRemoveModal(parseInt({!! $item->id !!}))" class="btn btn-danger btn-icon">
                                 <i class="fas fa-trash"></i></button>
                         </td>
-                        <td scope="row">{{ $item->user->username }}</td>
-                        <td scope="row">{{ $item->nama }}</td>
-                        <td scope="row">{{ $item->email }}</td>
-                        <td scope="row">{{ $item->alamat }}</td>
                     </tr>
                 @endforeach
             </tbody>
