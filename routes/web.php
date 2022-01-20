@@ -1,6 +1,7 @@
 <?php
 
 use App\Chat;
+use App\Http\Controllers\ChatController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
@@ -20,23 +21,13 @@ use Illuminate\Http\Request;
 
 Auth::routes();
 
-
-Route::get('/chat', function() {
-    return view('chat');
-});
-
-Route::post('/chat', function(Request $request) {
-    $chat = Chat::create([
-        'token' => $request->input('_token'),
-        'username' => $request->input('username')
-    ]);
-
-    return response()->json([
-        $chat->id
-    ]);
-})->name('chat.init');
-
 Route::get('/', [GuestController::class, 'index']);
+
+// Chatting
+Route::get('/chat', [GuestController::class, 'chatting']);
+Route::post('/chat', [GuestController::class, 'storeChat'])->name('chat.init');
+Route::get('/register/consult', [GuestController::class, 'registerConsult']);
+Route::post('/register/consult', [GuestController::class, 'storeConsultation'])->name('store.consult');
 
 Route::middleware('auth')->group(function () {
     Route::view('profile', 'profile')->name('profile');

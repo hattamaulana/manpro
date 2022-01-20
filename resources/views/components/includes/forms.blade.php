@@ -8,12 +8,22 @@
                     <label>{{ $item['label'] }}</label>
                 @endif
 
-                <input type="text" class="form-control @error($item['name']) is-invalid @enderror"
-                    name="{{ $item['name'] ?? '' }}" value="{{ $item['value'] ?? '' }}" {{ $item['read'] ?? '' }}>
+                <div class="input-group">
+                    @if (isset($item['input-group-prepend']))
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            {{ $item['input-group-prepend' ]}}
+                        </span>
+                    </div>
+                    @endif
 
-                @error($item['name'])
-                    <div class="invalid-feedback">{{ $message }}</div>
-                @enderror
+                    <input type="text" class="form-control @error($item['name']) is-invalid @enderror"
+                        name="{{ $item['name'] ?? '' }}" value="{{ $item['value'] ?? '' }}" {{ $item['read'] ?? '' }}>
+
+                    @error($item['name'])
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
             </div>
         @break
 

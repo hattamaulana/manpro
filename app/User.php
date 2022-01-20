@@ -25,12 +25,11 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
-    public function petugas()
-    {
-        return $this->hasOne(petugas::class, 'id', 'id');
+    public function psikolog() {
+        return $this->belongsTo(Psikolog::class, 'id', 'user_id');
     }
-    public function pegawai()
-    {
+
+    public function pegawai() {
         return $this->hasOne(pegawai::class, 'id', 'id');
     }
 }

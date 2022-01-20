@@ -2,8 +2,9 @@
 <html lang="en">
 
 <head>
+    <title>mhApps</title>
+
     <meta charset="utf-8">
-    <title>eStartup Bootstrap Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -13,9 +14,7 @@
     <link href="{{ asset('public/landing-page/img/apple-touch-icon.png') }}"" rel=" apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Roboto:100,300,400,500,700|Philosopher:400,400i,700,700i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Roboto:100,300,400,500,700|Philosopher:400,400i,700,700i" rel="stylesheet">
 
     <!-- Bootstrap css -->
     <!-- <link rel="stylesheet" href="{{ asset('public/landing-page/css/bootstrap.css') }}"> -->
@@ -31,6 +30,7 @@
     <!-- Main Stylesheet File -->
     <link href="{{ asset('public/landing-page/css/style.css') }}" rel="stylesheet">
 </head>
+
 <body>
 
     <header id="header" class="header header-hide">
@@ -58,9 +58,12 @@
         <div class="hero-container">
             <h1 style="position: absolute;">Jangan takut<br>untuk mengutamakan<br>kesehatan mentalmu</h1>
             <img src="{{ asset('public/landing-page/img/background.jpg') }}"" alt=" Hero Imgs">
-            <a href="#get-started" class="btn-get-started scrollto" style="position: absolute; margin-right: 777px;">Chat
-                Dengan Psikolog</a>
-            <a href="#get-started" class="btn-get-started scrollto"
+
+            <a href="{{ url('chat') }}" class="btn-get-started scrollto" style="position: absolute; margin-right: 777px;">
+                Chat Dengan Psikolog
+            </a>
+
+            <a href="{{ url('/register/consult') }}" class="btn-get-started scrollto"
                 style="position: absolute; margin-right: 247px;">Daftar Konsultasi</a>
         </div>
     </section>
@@ -113,7 +116,8 @@
 
                 <div class="col-md-6 col-lg-4">
                     <div class="feature-block">
-                        <img src="{{ asset('public/landing-page/img/svg/5.png') }}"" alt=" img" class="img-fluid">
+                        <img src="{{ asset('public/landing-page/img/svg/5.png') }}"" alt=" img"
+                            class="img-fluid">
                         <h4>Bantu mengatasi<br>masalah keluarga dan hubungan</h4>
                     </div>
                 </div>
@@ -181,88 +185,10 @@
         </div>
     </section>
 
-    <!--========================== Testimonials Section ============================-->
-    <section id="testimonials" class="padd-section text-center wow fadeInUp"
-        style="background: url(img/bg-cloud.png') }}" );">
-        <div class="container" style="padding-top: 101px;">
-            <div class="row justify-content-center">
-
-                <div class="col-md-8">
-
-                    <div class="testimonials-content">
-                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-
-                            <div class="carousel-inner" role="listbox">
-
-                                <div class="carousel-item  active">
-                                    <div class="top-top">
-
-                                        <h2>Testimoni</h2>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the
-                                            1500s, when an unknown printer took a galley of type and scrambled it to
-                                            make a type
-                                            specimen book. It has survived not only five centuries.</p>
-                                        <h4>Claudya Labertha<span>21 tahun</span></h4>
-
-                                    </div>
-                                </div>
-
-                                <div class="carousel-item ">
-                                    <div class="top-top">
-
-                                        <h2>Testimoni</h2>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the
-                                            1500s, when an unknown printer took a galley of type and scrambled it to
-                                            make a type
-                                            specimen book. It has survived not only five centuries.</p>
-                                        <h4>Dimas Dewangga<span>27 tahun</span></h4>
-
-                                    </div>
-                                </div>
-
-                                <div class="carousel-item ">
-                                    <div class="top-top">
-
-                                        <h2>Testimoni</h2>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the
-                                            1500s, when an unknown printer took a galley of type and scrambled it to
-                                            make a type
-                                            specimen book. It has survived not only five centuries.</p>
-                                        <h4>Syeila<span>19 tahun</span></h4>
-
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="btm-btm">
-
-                                <ul class="list-unstyled carousel-indicators">
-                                    <li data-target="#carousel-example-generic" data-slide-to="0"
-                                        class="active"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                                </ul>
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
     <!--========================== Team Section ============================-->
     <section id="team" class="padd-section text-center wow fadeInUp">
-
         <div class="container">
             <div class="section-title text-center">
-
                 <h2>About Us</h2>
                 <p class="separator"><b>mhApps</b> adalah Lorem ipsum dolor sit amet, consectetur adipisicing elit,
                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
@@ -278,7 +204,7 @@
 
                 <div class="col-md-6 col-md-4 col-lg-3">
                     <div class="team-block bottom">
-                        <img src="{{ asset('public/landing-page/img/team/hatta.png') }}"" class=" img-responsive"
+                        <img src="{{ asset('public/landing-page/img/team/hatta.png') }}"" class="  img-responsive"
                             alt="img">
                         <div class="team-content">
                             <ul class="list-unstyled">
@@ -293,7 +219,7 @@
 
                 <div class="col-md-6 col-md-4 col-lg-3">
                     <div class="team-block bottom">
-                        <img src="{{ asset('public/landing-page/img/team/addin.png') }}"" class=" img-responsive"
+                        <img src="{{ asset('public/landing-page/img/team/addin.png') }}"" class="  img-responsive"
                             alt="img">
                         <div class="team-content">
                             <ul class="list-unstyled">
@@ -308,7 +234,7 @@
 
                 <div class="col-md-6 col-md-4 col-lg-3">
                     <div class="team-block bottom">
-                        <img src="{{ asset('public/landing-page/img/team/fildzah.png') }}"" class=" img-responsive"
+                        <img src="{{ asset('public/landing-page/img/team/fildzah.png') }}"" class="  img-responsive"
                             alt="img">
                         <div class="team-content">
                             <ul class="list-unstyled">
@@ -323,7 +249,7 @@
 
                 <div class="col-md-6 col-md-4 col-lg-3">
                     <div class="team-block bottom">
-                        <img src="{{ asset('public/landing-page/img/team/ima.png') }}"" class=" img-responsive"
+                        <img src="{{ asset('public/landing-page/img/team/ima.png') }}"" class="  img-responsive"
                             alt="img">
                         <div class="team-content">
                             <ul class="list-unstyled">

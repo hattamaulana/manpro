@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>MH Apps</title>
+    <title>mhApps</title>
 
     <!-- Favicons -->
     <link href="{{ asset('public/assets/user/assets/img/logo-kediri.png') }}" rel="apple-touch-icon" />

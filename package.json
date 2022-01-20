@@ -24,7 +24,10 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "body-parser": "^1.19.1",
         "express": "^4.17.2",
+        "mysql": "^2.18.1",
+        "nodemon": "^2.0.15",
         "socket.io": "^4.4.0"
     }
 }

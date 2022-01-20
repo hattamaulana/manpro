@@ -4,82 +4,38 @@ namespace App\Http\Controllers;
 
 use App\Chat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class ChatController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
+class ChatController extends Controller {
+
+    public function index() {
+        $data = Chat::where('psikolog_id', 'is', null)->orWhere('psikolog_id', Auth::user()->psikolog->id)->get();
+        return view('super-admin.chatting', compact('data'));
+    }
+
+    public function create() {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
+    public function store(Request $request) {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function show(Chat $chat) {
+        return view('super-admin.chatting');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Chat  $chat
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Chat $chat)
-    {
-        //
+    public function edit($id) {
+        $data = Chat::find($id);
+        $data->psikolog_id =Auth::user()->psikolog->id;
+        $data->save();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Chat  $chat
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Chat $chat)
-    {
-        //
+    public function update(Request $request, $id) {
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Chat  $chat
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Chat $chat)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Chat  $chat
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Chat $chat)
-    {
+    public function destroy(Chat $chat) {
         //
     }
 }
